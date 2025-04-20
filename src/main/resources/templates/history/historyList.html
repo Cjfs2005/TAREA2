@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Historial de Empleados</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<main>
+    <div class="container px-4 py-5">
+        <h1 class="pb-2 border-bottom">Historial de empleados</h1>
+
+        <form method="get" th:action="@{/history/BuscarHistoriales}" class="d-flex">
+            <input name="searchField" class="form-control me-2" type="text" placeholder="Texto a buscar"/>
+            <button type="submit" class="btn me-2 btn-outline-primary">Buscar</button>
+            <a th:href="@{'/history/list'}" class="btn btn-outline-danger">Limpiar</a>
+        </form>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Puesto</th>
+                <th>Departamento</th>
+                <th>Fecha inicio</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="history, info : ${historyList}">
+                <td th:text="${history.getEmployee().getFirstName()}"></td>
+                <td th:text="${history.getEmployee().getLastName()}"></td>
+                <td th:text="${history.getEmployee().getJob().getJobTitle()}"></td>
+                <td th:text="${history.getDepartment().getDepartmentName()}"></td>
+                <td th:text="${history.getId().getStartDate()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
