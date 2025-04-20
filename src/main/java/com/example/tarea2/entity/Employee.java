@@ -26,8 +26,6 @@ public class Employee {
     @Column(nullable = false, unique = true)
     private String email;
 
-    private String password;
-
     @Column(nullable=false, name="hire_date")
     private LocalDateTime hireDate;
 
