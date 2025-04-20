@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reporte salarioss</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<main>
+    <div class="container px-4 py-5">
+        <h1 class="pb-2 border-bottom">Empleados con salario mayor a 15000</h1>
+
+        <form method="get" th:action="@{'/search'}">
+            <button type="submit" class="btn btn-primary">Regresar</button>
+        </form>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Fecha inicio</th>
+                <th>Fecha fin</th>
+                <th>Puesto</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="reporte, info : ${reportes}">
+                <td th:text="${reporte.getNombre()}"></td>
+                <td th:text="${reporte.getApellido()}"></td>
+                <td th:text="${reporte.getFechaInicio()}"></td>
+                <td th:text="${reporte.getFechaFin()}"></td>
+                <td th:text="${reporte.getNombrePuesto()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

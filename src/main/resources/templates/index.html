@@ -7,12 +7,13 @@
         <title>Home</title>
     </head>
     <body>
+        <div th:replace="~{fragments/navbar :: navbar}"></div>
         <main>
             <div class="container px-4 py-5">
                 <h1 class="pb-2 border-bottom">Gestión de HR</h1>
                 <a th:href="@{/employee/list}">Empleados</a><br/>
                 <a th:href="@{/history/list}">Historial</a><br/>
-                <a href="">Reporte visual</a>
+                <a th:href="@{/search}">Reporte visual</a>
             </div>
         </main>
         <script th:src="@{/js/bootstrap.bundle.min.js}" ></script>

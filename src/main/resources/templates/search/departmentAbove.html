@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reporte departamentos</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<main>
+    <div class="container px-4 py-5">
+        <h1 class="pb-2 border-bottom">Departamentos con mas de 3 empleados por ciudad y pais</h1>
+
+        <form method="get" th:action="@{'/search'}">
+            <button type="submit" class="btn btn-primary">Regresar</button>
+        </form>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>País</th>
+                <th>Ciudad</th>
+                <th>Cantidad</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="reporte, info : ${reportes}">
+                <td th:text="${reporte.getPais()}"></td>
+                <td th:text="${reporte.getCiudad()}"></td>
+                <td th:text="${reporte.getCantidad()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

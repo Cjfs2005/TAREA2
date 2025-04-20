@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reporte gerentes</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<main>
+    <div class="container px-4 py-5">
+        <h1 class="pb-2 border-bottom">Gerentes con mas de 5 años de experiencia</h1>
+
+        <form method="get" th:action="@{'/search'}">
+            <button type="submit" class="btn btn-primary">Regresar</button>
+        </form>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Departamento</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Sueldo</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="reporte, info : ${reportes}">
+                <td th:text="${reporte.getDepartamento()}"></td>
+                <td th:text="${reporte.getNombre()}"></td>
+                <td th:text="${reporte.getApellido()}"></td>
+                <td th:text="${reporte.getSueldo()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
